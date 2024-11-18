@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            btnDelete = new Button();
+            btnEdit = new Button();
             btnReviews = new Button();
             panel2 = new Panel();
             dgvReviews = new DataGridView();
+            btnAdd = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvReviews).BeginInit();
@@ -39,16 +42,39 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnAdd);
+            panel1.Controls.Add(btnDelete);
+            panel1.Controls.Add(btnEdit);
             panel1.Controls.Add(btnReviews);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(556, 62);
+            panel1.Size = new Size(556, 83);
             panel1.TabIndex = 0;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(473, 54);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "Sil";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Location = new Point(392, 54);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(75, 23);
+            btnEdit.TabIndex = 1;
+            btnEdit.Text = "Güncelle";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnReviews
             // 
-            btnReviews.Location = new Point(378, 34);
+            btnReviews.Location = new Point(266, 54);
             btnReviews.Name = "btnReviews";
             btnReviews.Size = new Size(120, 23);
             btnReviews.TabIndex = 0;
@@ -60,9 +86,9 @@
             // 
             panel2.Controls.Add(dgvReviews);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 62);
+            panel2.Location = new Point(0, 83);
             panel2.Name = "panel2";
-            panel2.Size = new Size(556, 360);
+            panel2.Size = new Size(556, 339);
             panel2.TabIndex = 1;
             // 
             // dgvReviews
@@ -71,8 +97,18 @@
             dgvReviews.Dock = DockStyle.Fill;
             dgvReviews.Location = new Point(0, 0);
             dgvReviews.Name = "dgvReviews";
-            dgvReviews.Size = new Size(556, 360);
+            dgvReviews.Size = new Size(556, 339);
             dgvReviews.TabIndex = 0;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(150, 54);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(75, 23);
+            btnAdd.TabIndex = 3;
+            btnAdd.Text = "Ekle";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // ReviewList
             // 
@@ -94,5 +130,8 @@
         private Panel panel2;
         private Button btnReviews;
         private DataGridView dgvReviews;
+        private Button btnEdit;
+        private Button btnDelete;
+        private Button btnAdd;
     }
 }

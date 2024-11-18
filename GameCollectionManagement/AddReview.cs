@@ -11,6 +11,8 @@ namespace GameCollectionManagement
         private readonly User _user;
 
         private readonly IGameService _gameService;
+
+        private readonly ReviewList _reviewList;
         public AddReview(User user)
         {
             InitializeComponent();
@@ -22,6 +24,20 @@ namespace GameCollectionManagement
             cbGames.DataSource = games;
             cbGames.DisplayMember = "Name";
             cbGames.ValueMember = "Id";
+
+        }
+        public AddReview(User user, ReviewList reviewList)
+        {
+            InitializeComponent();
+            _user = user;
+            _gameService = new GameService();
+            _reviewService = new ReviewService();
+
+            var games = _gameService.GetAll();
+            cbGames.DataSource = games;
+            cbGames.DisplayMember = "Name";
+            cbGames.ValueMember = "Id";
+            _reviewList = reviewList;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -48,6 +64,13 @@ namespace GameCollectionManagement
                     _reviewService.Add(review);
 
                     MessageBox.Show("Yorumunuz Eklendi.");
+
+                    if (_reviewList is not null)
+                    {
+                        _reviewList.LoadReviews();
+                        ((Form)Parent.Parent).Close();
+                    }
+
                     ClearInputs();
                 }
             }
@@ -73,7 +96,7 @@ namespace GameCollectionManagement
                 }
                 else if (ctrl is NumericUpDown)
                 {
-                    ((NumericUpDown)ctrl).Value = nudRating.Maximum;
+                    ((NumericUpDown)ctrl).Value = nudRating.Minimum;
                 }
 
             }

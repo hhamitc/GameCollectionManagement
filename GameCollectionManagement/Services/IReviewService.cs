@@ -12,7 +12,7 @@ namespace GameCollectionManagement.Services
         List<Review> GetAllWithDetails();
         Review GetByIdWithDetails(int id);
         List<Review> GetAllByRole(string role, int userId);
-
+        void DeleteByRole(int reviewId, string role, int userId);
 
     }
 }

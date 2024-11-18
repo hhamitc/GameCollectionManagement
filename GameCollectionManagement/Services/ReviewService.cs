@@ -71,6 +71,11 @@ namespace GameCollectionManagement.Services
             }
         }
 
+        public void DeleteByRole(int reviewId, string role, int userId)
+        {
+            _reviewRepository.DeleteByRole(reviewId, role, userId);
+        }
+
         public List<Review> GetAll()
         {
             return _reviewRepository.GetAll();

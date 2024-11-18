@@ -132,6 +132,20 @@ namespace GameCollectionManagement.Repositories
             Delete(entity.Id);
         }
 
+        public void DeleteByRole(int reviewId, string role, int userId)
+        {
+            if (role == "admin")
+            {
+                var review = GetById(reviewId);
+                if (review.UserId == userId)
+                {
+                    return;
+                }
+            }
+
+            Delete(reviewId);
+        }
+
         public List<Review> GetAllWithDetails()
         {
             string query = "select r.*, u.UserName, u.Email, u.Password, u.Role, g.Name, g.Genre, g.Platform, g.ReleaseDate, g.Platform,g.CoverImage from Reviews r inner join Users u on r.UserId=u.Id inner join Games g on r.GameId=g.Id ";
