@@ -111,9 +111,9 @@ namespace GameCollectionManagement.Repositories
         }
 
 
-        public bool Login(string userName, string password)
+        public (bool, int?) Login(string userName, string password)
         {
-            string query = "select 1 from Users where UserName=@UserName and Password=@Password";
+            string query = "select Id from Users where UserName=@UserName and Password=@Password";
 
             //SqlParameter[] parameters = new SqlParameter[] {
             //new SqlParameter("@UserName", userName),
@@ -125,7 +125,12 @@ namespace GameCollectionManagement.Repositories
                                 .Build();
 
             var dataTable = ExecuteQuery(query, parameters);
-            return dataTable.Rows.Count > 0;
+
+            if (dataTable.Rows.Count == 0)
+                return (false, null);
+
+            int id = (int)dataTable.Rows[0]["Id"];
+            return (true, id);
         }
 
 

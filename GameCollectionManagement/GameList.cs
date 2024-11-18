@@ -70,8 +70,53 @@ namespace GameCollectionManagement
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddGameForm addGameForm = new AddGameForm();
+            AddGameForm addGameForm = new AddGameForm(this);
             addGameForm.ShowDialog();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchTerm = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                searchTerm = txtSearch.Text;
+            }
+
+            if (cbPlatform.SelectedItem != null)
+            {
+                searchTerm = cbPlatform.SelectedItem.ToString();
+            }
+
+            if (cbGenre.SelectedItem != null)
+            {
+                searchTerm = cbGenre.SelectedItem.ToString();
+            }
+
+            var games = _gameService.Search(searchTerm);
+
+            dgvGames.DataSource = games;
+        }
+
+        public void LoadGenres()
+        {
+            var genres = _gameService.GetGenres();
+            cbGenre.Items.Clear();
+            cbGenre.Items.AddRange(genres.ToArray());
+        }
+
+        private void GameList_Load(object sender, EventArgs e)
+        {
+            //var genres = _gameService.GetGenres();
+            //cbGenre.Items.AddRange(genres.ToArray());
+
+            LoadGenres();
+
         }
     }
 }

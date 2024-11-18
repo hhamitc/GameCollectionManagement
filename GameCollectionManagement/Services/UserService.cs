@@ -57,7 +57,7 @@ namespace GameCollectionManagement.Services
             return _userRepository.GetById(id);
         }
 
-        public bool Login(string userName, string password)
+        public (bool isAuthenticated, int? userId) Login(string userName, string password)
         {
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
             {
@@ -78,8 +78,18 @@ namespace GameCollectionManagement.Services
 
             if (currentUser != null)
             {
-                _userRepository.Update(currentUser);
+                //currentUser.Email = user.Email;
+                //currentUser.Password = user.Password;
+                //currentUser.UserName = user.UserName;
+                //currentUser.Role = user.Role;
+                _userRepository.Update(user);
             }
         }
+
+        public List<User> Search(string searchTerm)
+        {
+            return GetAll().Where(u => u.UserName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) || u.Email.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
     }
 }

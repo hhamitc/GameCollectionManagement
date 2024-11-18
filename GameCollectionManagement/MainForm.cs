@@ -1,10 +1,17 @@
-﻿namespace GameCollectionManagement
+﻿using GameCollectionManagement.Models;
+
+namespace GameCollectionManagement
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+
+        private readonly User _user;
+        public MainForm(User user)
         {
             InitializeComponent();
+            _user = user;
+
+            tsslUserName.Text = _user.UserName;
         }
 
         private void dosyaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -12,9 +19,9 @@
 
         }
 
-        private void kayıtOlToolStripMenuItem_Click(object sender, EventArgs e)
+        private void registerTsmi_Click(object sender, EventArgs e)
         {
-
+            AddControl(new AddUser());
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -42,6 +49,21 @@
         private void gameListTsmi_Click(object sender, EventArgs e)
         {
             AddControl(new GameList());
+        }
+
+        private void userListTsmi_Click(object sender, EventArgs e)
+        {
+            AddControl(new UserList());
+        }
+
+        private void addReviewTsmi_Click(object sender, EventArgs e)
+        {
+            AddControl(new AddReview(_user));
+        }
+
+        private void reviewListTsmi_Click(object sender, EventArgs e)
+        {
+            AddControl(new ReviewList(_user));
         }
     }
 }

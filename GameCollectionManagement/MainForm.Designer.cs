@@ -34,7 +34,7 @@
             userTsmi = new ToolStripMenuItem();
             registerTsmi = new ToolStripMenuItem();
             userListTsmi = new ToolStripMenuItem();
-            loginTsmi = new ToolStripMenuItem();
+            kullanıcıToolStripMenuItem = new ToolStripMenuItem();
             gameTsmi = new ToolStripMenuItem();
             newGameTsmi = new ToolStripMenuItem();
             gameListTsmi = new ToolStripMenuItem();
@@ -43,7 +43,11 @@
             reviewListTsmi = new ToolStripMenuItem();
             aboutTsmi = new ToolStripMenuItem();
             panelContent = new Panel();
+            statusStrip1 = new StatusStrip();
+            tsslUserName = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
+            panelContent.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -71,7 +75,7 @@
             // 
             // userTsmi
             // 
-            userTsmi.DropDownItems.AddRange(new ToolStripItem[] { registerTsmi, userListTsmi, loginTsmi });
+            userTsmi.DropDownItems.AddRange(new ToolStripItem[] { registerTsmi, userListTsmi, kullanıcıToolStripMenuItem });
             userTsmi.Name = "userTsmi";
             userTsmi.Size = new Size(64, 20);
             userTsmi.Text = "Kullanıcı";
@@ -81,19 +85,20 @@
             registerTsmi.Name = "registerTsmi";
             registerTsmi.Size = new Size(159, 22);
             registerTsmi.Text = "Kayıt Ol";
-            registerTsmi.Click += kayıtOlToolStripMenuItem_Click;
+            registerTsmi.Click += registerTsmi_Click;
             // 
             // userListTsmi
             // 
             userListTsmi.Name = "userListTsmi";
             userListTsmi.Size = new Size(159, 22);
             userListTsmi.Text = "Tüm Kullanıcılar";
+            userListTsmi.Click += userListTsmi_Click;
             // 
-            // loginTsmi
+            // kullanıcıToolStripMenuItem
             // 
-            loginTsmi.Name = "loginTsmi";
-            loginTsmi.Size = new Size(159, 22);
-            loginTsmi.Text = "Oturum Aç";
+            kullanıcıToolStripMenuItem.Name = "kullanıcıToolStripMenuItem";
+            kullanıcıToolStripMenuItem.Size = new Size(159, 22);
+            kullanıcıToolStripMenuItem.Text = "Kullanıcı";
             // 
             // gameTsmi
             // 
@@ -105,14 +110,14 @@
             // newGameTsmi
             // 
             newGameTsmi.Name = "newGameTsmi";
-            newGameTsmi.Size = new Size(180, 22);
+            newGameTsmi.Size = new Size(143, 22);
             newGameTsmi.Text = "Oyun Ekle";
             newGameTsmi.Click += newGameTsmi_Click;
             // 
             // gameListTsmi
             // 
             gameListTsmi.Name = "gameListTsmi";
-            gameListTsmi.Size = new Size(180, 22);
+            gameListTsmi.Size = new Size(143, 22);
             gameListTsmi.Text = "Tüm Oyunlar";
             gameListTsmi.Click += gameListTsmi_Click;
             // 
@@ -126,14 +131,16 @@
             // addReviewTsmi
             // 
             addReviewTsmi.Name = "addReviewTsmi";
-            addReviewTsmi.Size = new Size(149, 22);
+            addReviewTsmi.Size = new Size(180, 22);
             addReviewTsmi.Text = "Yorum Ekle";
+            addReviewTsmi.Click += addReviewTsmi_Click;
             // 
             // reviewListTsmi
             // 
             reviewListTsmi.Name = "reviewListTsmi";
-            reviewListTsmi.Size = new Size(149, 22);
+            reviewListTsmi.Size = new Size(180, 22);
             reviewListTsmi.Text = "Tüm Yorumlar";
+            reviewListTsmi.Click += reviewListTsmi_Click;
             // 
             // aboutTsmi
             // 
@@ -143,12 +150,27 @@
             // 
             // panelContent
             // 
+            panelContent.Controls.Add(statusStrip1);
             panelContent.Dock = DockStyle.Fill;
             panelContent.Location = new Point(0, 24);
             panelContent.Name = "panelContent";
             panelContent.Size = new Size(800, 426);
             panelContent.TabIndex = 1;
             panelContent.Paint += panel1_Paint;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { tsslUserName });
+            statusStrip1.Location = new Point(0, 404);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.TabIndex = 0;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // tsslUserName
+            // 
+            tsslUserName.Name = "tsslUserName";
+            tsslUserName.Size = new Size(0, 17);
             // 
             // MainForm
             // 
@@ -163,6 +185,10 @@
             Load += MainForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            panelContent.ResumeLayout(false);
+            panelContent.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,7 +201,6 @@
         private ToolStripMenuItem userTsmi;
         private ToolStripMenuItem registerTsmi;
         private ToolStripMenuItem userListTsmi;
-        private ToolStripMenuItem loginTsmi;
         private ToolStripMenuItem gameTsmi;
         private ToolStripMenuItem newGameTsmi;
         private ToolStripMenuItem gameListTsmi;
@@ -184,5 +209,8 @@
         private ToolStripMenuItem reviewListTsmi;
         private ToolStripMenuItem aboutTsmi;
         private Panel panelContent;
+        private ToolStripMenuItem kullanıcıToolStripMenuItem;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel tsslUserName;
     }
 }

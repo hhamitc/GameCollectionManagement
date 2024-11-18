@@ -53,6 +53,11 @@ namespace GameCollectionManagement.Services
             return _gameRepository.GetById(id);
         }
 
+        public List<string> GetGenres()
+        {
+            return _gameRepository.GetGenres();
+        }
+
         public int GetTotalCount()
         {
             return GetAll().Count();

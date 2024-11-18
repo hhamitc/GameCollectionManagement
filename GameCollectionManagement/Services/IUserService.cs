@@ -10,7 +10,7 @@ namespace GameCollectionManagement.Services
         void Update(User user);
         void Delete(int id);
         void Add(User user);
-        bool Login(string userName, string password);
-
+        (bool isAuthenticated, int? userId) Login(string userName, string password);
+        List<User> Search(string searchTerm);
     }
 }

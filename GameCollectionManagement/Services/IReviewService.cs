@@ -11,6 +11,8 @@ namespace GameCollectionManagement.Services
         void Add(Review review);
         List<Review> GetAllWithDetails();
         Review GetByIdWithDetails(int id);
+        List<Review> GetAllByRole(string role, int userId);
+
 
     }
 }

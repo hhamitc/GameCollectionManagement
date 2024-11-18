@@ -52,7 +52,7 @@ namespace GameCollectionManagement
                     MessageBox.Show("Oyun Güncellendi.");
 
                     _gameList.LoadGames();
-
+                    _gameList.LoadGenres();
                     Close();
 
                 }

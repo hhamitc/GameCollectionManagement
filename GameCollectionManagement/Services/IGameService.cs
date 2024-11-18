@@ -13,5 +13,7 @@ namespace GameCollectionManagement.Services
         List<Game> GetByGenre(string genre);
         int GetTotalCount();
 
+        List<string> GetGenres();
+
     }
 }

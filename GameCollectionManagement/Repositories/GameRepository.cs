@@ -147,5 +147,18 @@ namespace GameCollectionManagement.Repositories
             Delete(entity.Id);
         }
 
+        public List<string> GetGenres()
+        {
+            var games = GetAll();
+
+            List<string> genres = new List<string>();
+
+            foreach (var game in games)
+            {
+                if (!genres.Contains(game.Genre))
+                    genres.Add(game.Genre);
+            }
+            return genres;
+        }
     }
 }

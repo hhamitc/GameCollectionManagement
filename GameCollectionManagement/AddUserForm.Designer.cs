@@ -1,6 +1,6 @@
 ﻿namespace GameCollectionManagement
 {
-    partial class AddGameForm
+    partial class AddUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,18 +36,18 @@
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(0, 0);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(594, 357);
+            panelContainer.Size = new Size(576, 356);
             panelContainer.TabIndex = 0;
             // 
-            // AddGameForm
+            // AddUserForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(594, 357);
+            ClientSize = new Size(576, 356);
             Controls.Add(panelContainer);
-            Name = "AddGameForm";
-            Text = "AddGameForm";
-            Load += AddGameForm_Load;
+            Name = "AddUserForm";
+            Text = "AddUserForm";
+            Load += AddUserForm_Load;
             ResumeLayout(false);
         }
 

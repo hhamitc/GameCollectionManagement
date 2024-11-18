@@ -76,6 +76,11 @@ namespace GameCollectionManagement.Services
             return _reviewRepository.GetAll();
         }
 
+        public List<Review> GetAllByRole(string role, int userId)
+        {
+            return _reviewRepository.GetAllByRole(role, userId);
+        }
+
         public List<Review> GetAllWithDetails()
         {
             return (_reviewRepository.GetAllWithDetails());

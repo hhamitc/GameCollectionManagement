@@ -50,7 +50,8 @@ namespace GameCollectionManagement
                     if (_games is not null)
                     {
                         _games.LoadGames();
-                        ((Form)Parent).Close();
+                        _games.LoadGenres();
+                        ((Form)Parent.Parent).Close();
                     }
 
                     ClearForm();

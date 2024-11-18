@@ -22,6 +22,31 @@ namespace GameCollectionManagement.Repositories
             return reviews;
         }
 
+        public List<Review> GetAllByRole(string role, int userId)
+        {
+            if (role == "admin")
+            {
+                return GetAll();
+            }
+
+            string query = "Select * from Reviews where UserId=@UserId";
+            var parameters = new SqlParameterBuilder()
+                .AddParameter("@UserId", userId)
+                .Build();
+
+            DataTable dataTable = ExecuteQuery(query, parameters);
+
+            List<Review> reviews = new List<Review>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                reviews.Add(DataMappers.MapToReview(row));
+            }
+
+            return reviews;
+        }
+
+
         public override Review GetById(int id)
         {
             string query = "Select * from Reviews where Id=@Id";

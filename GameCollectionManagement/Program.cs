@@ -17,7 +17,16 @@ namespace GameCollectionManagement
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+
+            LoginForm login = new LoginForm();
+
+            Application.Run(login);
+
+            if (login.IsAuthenticated)
+            {
+                Application.Run(new MainForm(login.User));
+            }
+
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
